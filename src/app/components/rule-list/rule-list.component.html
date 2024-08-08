@@ -1,15 +1,15 @@
 <div class="container mt-4">
     <div class="row">
-      <div class="col-md-3 mt-3" *ngFor="let rule of rules">
-        <div class="card text-white bg-secondary mb-3 card-equal-height" style="max-width: 18rem;">
+      <div class="col-md-3 mt-3" *ngFor="let rule of rules; let i = index">
+        <div class="card text-white mb-3 card-equal-height" [ngClass]="{'bg-secondary': i % 2 === 0, 'bg-dark': i % 2 !== 0}"  style="max-width: 18rem;">
           <div class="card-header">
             <h2>{{ rule.ruleType }}</h2>
-            <span class="card-text"><small class="text-muted">{{ rule.date|date}}</small></span>
+            <span class="card-text"><small [ngClass]="{'text-muted': i % 2 === 0}">{{ rule.date|date}}</small></span>
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ rule.title }}</h5>
             <p class="card-text"  [class.collapsed]="rule.collapsed">{{ rule.description }}</p>
-            <a class="btn btn-dark" (click)="toggleDescription(rule)">
+            <a class="btn" [ngClass]="{'btn-light': i % 2 === 0, 'bg-danger': i % 2 !== 0}"  (click)="toggleDescription(rule)">
               {{ rule.collapsed ? 'Show More' : 'Show Less' }}
             </a>
           </div>
