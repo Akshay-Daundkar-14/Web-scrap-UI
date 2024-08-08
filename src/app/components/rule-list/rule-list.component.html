@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
     <div class="row">
       <div class="col-md-3 mt-3" *ngFor="let rule of rules; let i = index">
         <div class="card text-white mb-3 card-equal-height" [ngClass]="{'bg-secondary': i % 2 === 0, 'bg-dark': i % 2 !== 0}"  style="max-width: 18rem;">
@@ -10,6 +10,31 @@
             <h5 class="card-title">{{ rule.title }}</h5>
             <p class="card-text"  [class.collapsed]="rule.collapsed">{{ rule.description }}</p>
             <a class="btn" [ngClass]="{'btn-light': i % 2 === 0, 'bg-danger': i % 2 !== 0}"  (click)="toggleDescription(rule)">
+              {{ rule.collapsed ? 'Show More' : 'Show Less' }}
+            </a>
+          </div>
+          <div>
+            <span *ngFor="let bullet of rule.bulletPoints" class="badge text-bg-light m-1">{{bullet}}</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-3 mt-3" *ngFor="let rule of rules; let i = index">
+        <div class="card text-white bg-dark mb-3 card-equal-height"  style="max-width: 18rem;">
+          <div class="card-header">
+            <h2>{{ rule.ruleType }}</h2>
+            <span class="card-text"><small>{{ rule.date|date}}</small></span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ rule.title }}</h5>
+            <p class="card-text"  [class.collapsed]="rule.collapsed">{{ rule.description }}</p>
+            <a class="btn bg-danger"  (click)="toggleDescription(rule)">
               {{ rule.collapsed ? 'Show More' : 'Show Less' }}
             </a>
           </div>
